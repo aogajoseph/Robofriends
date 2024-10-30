@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Cardlist from "../components/Cardlist";
 import Searchbox from "../components/Searchbox";
-import Scroll from '../components/Scroll';
 import ErrorBoundary from "../components/ErrorBoundary.js";
 import './App.css';
 
@@ -33,13 +32,15 @@ class App extends Component {
         })
         return !robots.length ? <h2>Loading...</h2> : (
             <div className="tc">
-                <h1 className="f1">Robofriends</h1>
-                <Searchbox searchChange={this.onSearchChange} />
-                <Scroll>
+                <div className="header">
+                    <h1 className="f1">Robofriends</h1>
+                    <Searchbox searchChange={this.onSearchChange} />
+                </div>
+                <div>
                     <ErrorBoundary>
                         <Cardlist robots={filteredRobots} />
                     </ErrorBoundary>
-                </Scroll>
+                </div>
             </div>
         );      
     }
